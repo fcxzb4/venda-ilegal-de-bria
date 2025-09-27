@@ -1,6 +1,6 @@
 import React from 'react';
 import ProductCard from './components/ProductCard';
-import { PRODUCTS } from './data/productsData';
+import { PRODUCTS } from './module/productsData';
 import './styles.css'; // O CSS principal também é importante aqui
 
 function App() {

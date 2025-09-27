@@ -50,23 +50,23 @@ export const PRODUCTS = [
     },
       {
         id: 8,
-        title: "",
-        description: "Alta performance em um design de pura intelectualidade.",
+        title: "braia da crakolandia",
+        description: "Aparece e furta seus pertences para utilização recreativa.",
         price: "4.500,00",
-        image: "https://www.google.com/url?sa=i&url=https%3A%2F%2Fdepositphotos.com%2Fbr%2Fphoto%2Fthe-thinker-monkey-89046226.html&psig=AOvVaw3HcLDXsUKxK78y9pD5aH6z&ust=1759013968765000&source=images&cd=vfe&opi=89978449&ved=0CBUQjRxqFwoTCMjq4OfD948DFQAAAAAdAAAAABBf"
+        image: "https://miro.medium.com/1*wYGx-xlexcMzMPGSg5NCFg.jpeg"
     },
       {
         id: 9,
-        title: "braia pensamentos pensantes ",
-        description: "Alta performance em um design de pura intelectualidade.",
+        title: "braia selvagem",
+        description: "Um otima guarda costa de sua casa.",
         price: "4.500,00",
-        image: "https://www.google.com/url?sa=i&url=https%3A%2F%2Fdepositphotos.com%2Fbr%2Fphoto%2Fthe-thinker-monkey-89046226.html&psig=AOvVaw3HcLDXsUKxK78y9pD5aH6z&ust=1759013968765000&source=images&cd=vfe&opi=89978449&ved=0CBUQjRxqFwoTCMjq4OfD948DFQAAAAAdAAAAABBf"
+        image: "https://c.files.bbci.co.uk/877B/production/_126038643_gettyimages-1048896140.jpg"
     },
       {
         id: 10,
-        title: "braia pensamentos pensantes ",
-        description: "Alta performance em um design de pura intelectualidade.",
+        title: "Droga e o braia ",
+        description: "Aonde ele aparece ja e mal recebido.",
         price: "4.500,00",
-        image: "https://www.google.com/url?sa=i&url=https%3A%2F%2Fdepositphotos.com%2Fbr%2Fphoto%2Fthe-thinker-monkey-89046226.html&psig=AOvVaw3HcLDXsUKxK78y9pD5aH6z&ust=1759013968765000&source=images&cd=vfe&opi=89978449&ved=0CBUQjRxqFwoTCMjq4OfD948DFQAAAAAdAAAAABBf"
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQgyMpadkx4tmGeJMVR0xcs_iBF9wiDdVCOuA&s"
     },
 ];
