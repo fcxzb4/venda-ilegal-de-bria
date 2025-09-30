@@ -1,16 +1,95 @@
-import React from 'react';
-import ProductCard from './components/ProductCard';
-import { PRODUCTS } from './module/productsData';
-import './styles.css'; // O CSS principal também é importante aqui
+import ProductCard from "./components/container/ProductCard";
+import { useEffect, useState } from "react";
+import "./styles.css"; // O CSS principal também é importante aqui
 
 function App() {
+  const [products, setProducts] = useState([]); 
+  const [loading, setLoading] = useState(true); 
+  // 🚨 NOVO ESTADO: Usado para forçar a recarga da lista após um POST
+  const [refreshKey, setRefreshKey] = useState(0); 
+
+  // --- Função para buscar os produtos (GET) ---
+  useEffect(() => {
+    const fetchProducts = async () => {
+      setLoading(true);
+      try {
+        const response = await fetch('http://localhost:3001/api/products'); 
+        const data = await response.json();
+        setProducts(data); 
+
+      } catch (error) {
+        console.error("Houve um erro na requisição:", error);
+      } finally {
+        setLoading(false); 
+      }
+    };
+
+    fetchProducts();
+  }, [refreshKey]); // <--- Roda quando o refreshKey muda
+
+  // --- Função para Adicionar um Novo Produto (POST) ---
+  const handleAddCard = async () => {
+    // 1. Dados de exemplo para o novo produto
+    const newProductData = {
+      title: "Novo Braia Adicionado",
+      description: `Produto dinâmico #${products.length + 1} criado via POST.`,
+      price: "150,00",
+      image: "https://via.placeholder.com/300x200?text=Novo+Cartao" 
+    };
+
+    try {
+      const response = await fetch('http://localhost:3001/api/products', {
+        method: 'POST', // Método POST para criar o recurso
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(newProductData),
+      });
+
+      if (response.ok) {
+        
+        // 2. Força a atualização do useEffect para carregar o novo produto
+        setRefreshKey(prevKey => prevKey + 1); 
+
+      } else {
+        alert('Erro ao criar o cartão. Verifique o servidor.');
+      }
+    } catch (error) {
+      console.error('Erro de conexão:', error);
+      alert('Erro de rede ao tentar criar o cartão.');
+    }
+  };
+
+  if (loading) {
+    return <div style={{ padding: '50px', textAlign: 'center' }}>Carregando cartões...</div>;
+  }
+  
   return (
-    // 'product-grid' é a classe que define a estrutura de grade (grid ou flexbox)
-    <main className="product-grid"> 
-      {PRODUCTS.map(product => (
-        <ProductCard key={product.id} product={product} />
-      ))}
-    </main>
+    <>
+      <div style={{ display: 'flex', justifyContent: 'center', margin: '20px 0' }}>
+        {/* 🚨 NOVO BOTÃO DE ADICIONAR CARTÃO */}
+        <button 
+          onClick={handleAddCard} 
+          style={{ 
+            padding: '12px 25px', 
+            fontSize: '1em', 
+            backgroundColor: '#007bff', 
+            color: 'white', 
+            border: 'none', 
+            borderRadius: '5px',
+            cursor: 'pointer'
+          }}
+        >
+          + Adicionar Novo Cartão de Produto
+        </button>
+      </div>
+
+      <main className="product-grid"> 
+        {products.map(product => (
+          <ProductCard key={product.id} product={product} />
+        ))}
+      </main>
+    </>
   );
 }
 

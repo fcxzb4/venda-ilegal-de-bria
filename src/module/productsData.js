@@ -17,7 +17,7 @@ export const PRODUCTS = [
         id: 3,
         title: "braia pensamentos pensantes ",
         description: "Alta performance em um design de pura intelectualidade.",
-        price: "4.500,00",
+        price: "cogito ergo vruum vruum",
         image: "https://media.istockphoto.com/id/1442902261/pt/foto/closeup-shot-of-a-chimpanzee-making-a-thinking-posture.jpg?s=612x612&w=0&k=20&c=DlpvVMsryCPjIrrEkSihmt37SSttVrDAVJ6hflJog3E="
     },
     {
@@ -31,7 +31,7 @@ export const PRODUCTS = [
         id: 5,
         title: "braia desbravador",
         description: "Um ser muito atrevido.",
-        price: "4.500,00",
+        price: "Elon Musk",
         image: "https://static.nationalgeographicbrasil.com/files/styles/image_3200/public/mono-carvoeiro-2.webp?w=1600&h=1600"
     },
       {
@@ -45,28 +45,28 @@ export const PRODUCTS = [
         id: 7,
         title: "braia do job",
         description: "Ele aguenta muita coisa calado.",
-        price: "4.500,00",
+        price: "2,090,91",
         image: "https://cdn.ahnegao.com.br/wp-content/uploads/2014/07/ferias.jpg"
     },
       {
         id: 8,
         title: "braia da crakolandia",
         description: "Aparece e furta seus pertences para utilização recreativa.",
-        price: "4.500,00",
+        price: "90.130,e quebrados",
         image: "https://miro.medium.com/1*wYGx-xlexcMzMPGSg5NCFg.jpeg"
     },
       {
         id: 9,
         title: "braia selvagem",
         description: "Um otima guarda costa de sua casa.",
-        price: "4.500,00",
+        price: "3,200,00",
         image: "https://c.files.bbci.co.uk/877B/production/_126038643_gettyimages-1048896140.jpg"
     },
       {
         id: 10,
         title: "Droga e o braia ",
         description: "Aonde ele aparece ja e mal recebido.",
-        price: "4.500,00",
+        price: "valor de um skyline",
         image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQgyMpadkx4tmGeJMVR0xcs_iBF9wiDdVCOuA&s"
     },
 ];
