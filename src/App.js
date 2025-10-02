@@ -3,11 +3,16 @@ import { useEffect, useState } from "react";
 import "./styles.css"; // O CSS principal também é importante aqui
 
 function App() {
-  const [products, setProducts] = useState([]); 
+ const [products, setProducts] = useState([]); 
   const [loading, setLoading] = useState(true); 
   // 🚨 NOVO ESTADO: Usado para forçar a recarga da lista após um POST
   const [refreshKey, setRefreshKey] = useState(0); 
 
+const forceRefresh = () => {
+    setRefreshKey(prevKey => prevKey + 1);
+  };
+
+  
   // --- Função para buscar os produtos (GET) ---
   useEffect(() => {
     const fetchProducts = async () => {
@@ -86,7 +91,11 @@ function App() {
 
       <main className="product-grid"> 
         {products.map(product => (
-          <ProductCard key={product.id} product={product} />
+          <ProductCard key={product.id} product={product} className="product-grid" />
+        ))}
+        {products.map(product => (
+          // 🚨 Passa a função de atualização para o ProductCard
+          <ProductCard key={product.id} product={product} onUpdate={forceRefresh} />
         ))}
       </main>
     </>

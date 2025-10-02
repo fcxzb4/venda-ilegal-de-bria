@@ -86,3 +86,59 @@
 .add-to-cart-btn:hover {
     background-color: #218838;
 }
+
+/* Adicione no final do seu styles.css */
+
+.input-edit {
+    width: 100%;
+    padding: 5px;
+    margin-bottom: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-family: inherit;
+}
+
+.title-edit {
+    font-size: 1.25em;
+    font-weight: bold;
+}
+
+.description-edit {
+    resize: vertical;
+}
+
+.price-edit {
+    font-size: 1.5em;
+    font-weight: 700;
+    color: #007bff;
+}
+
+.edit-btn {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #007bff;
+    background-color: transparent;
+    color: #007bff;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9em;
+    margin-top: 5px;
+    transition: all 0.2s;
+}
+
+.edit-btn:hover {
+    background-color: #e6f2ff;
+}
+
+.save-btn {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    margin-bottom: 5px;
+}
+
+.cancel-btn {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+}
