@@ -65,14 +65,14 @@ const forceRefresh = () => {
     }
   };
 
-  if (loading) {
+   if (loading) {
     return <div style={{ padding: '50px', textAlign: 'center' }}>Carregando cartões...</div>;
   }
   
   return (
     <>
       <div style={{ display: 'flex', justifyContent: 'center', margin: '20px 0' }}>
-        {/* 🚨 NOVO BOTÃO DE ADICIONAR CARTÃO */}
+        {/* BOTÃO DE ADICIONAR CARTÃO (Função handleAddCard) */}
         <button 
           onClick={handleAddCard} 
           style={{ 
@@ -90,16 +90,22 @@ const forceRefresh = () => {
       </div>
 
       <main className="product-grid"> 
+        {/* 🚨 CORREÇÃO AQUI: MAPEAR APENAS UMA VEZ! */}
         {products.map(product => (
-          <ProductCard key={product.id} product={product} className="product-grid" />
+          // Você precisa passar o onUpdate para que o DELETE e o PUT funcionem
+          <ProductCard 
+            key={product.id} 
+            product={product} 
+            onUpdate={forceRefresh} 
+            // O atributo className estava incorreto aqui
+          />
         ))}
-        {products.map(product => (
-          // 🚨 Passa a função de atualização para o ProductCard
-          <ProductCard key={product.id} product={product} onUpdate={forceRefresh} />
-        ))}
+        {/* ❌ REMOVIDO: O segundo products.map() que estava aqui */}
       </main>
+      
     </>
   );
 }
+
 
 export default App;

@@ -4,7 +4,7 @@ export const PRODUCTS = [
         title: "braia de tarbalho",
         description: "Conforto para os trabalhos mais arduos de sua casa.",
         price: "199,90",
-        image: "https://s2-g1.glbimg.com/RXkIPoI2JElY-TUYYdELq5lps_g=/0x0:551x551/984x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2019/5/E/7UeiJbTWeJMqgaV1dT8w/58377565-10157037196920782-6526628411761229824-n.png"
+        image: "https://s2.glbimg.com/bTq3D0I6ai101S6TcNqGEa1hdHY=/1200x630/s.glbimg.com/jo/g1/f/original/2015/11/27/coldplay.jpg"
     },
     {
         id: 2,
