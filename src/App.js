@@ -18,7 +18,7 @@ const forceRefresh = () => {
     const fetchProducts = async () => {
       setLoading(true);
       try {
-        const response = await fetch('http://localhost:3000'); 
+        const response = await fetch('http://localhost:3001/card'); 
         const data = await response.json();
         setProducts(data); 
 
