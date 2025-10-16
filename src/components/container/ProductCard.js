@@ -82,7 +82,7 @@ function ProductCard({ product, onUpdate }) {
       // 2. Requisição DELETE
       // ⚠️ GARANTA QUE O ID ESTÁ SENDO INSERIDO CORRETAMENTE NA URL
       const response = await fetch(
-       `http://localhost:3001/card`,
+       `http://localhost:3001/card  `,
         {
           method: "DELETE",
         }
