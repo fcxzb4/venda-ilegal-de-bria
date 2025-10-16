@@ -31,7 +31,7 @@ function ProductCard({ product, onUpdate }) {
     try {
       // 1. O URL deve incluir o ID do produto:
       const response = await fetch(
-        `http://localhost:3001/api/products/${product.id}`,
+        `http://localhost:3001/card`,
         {
           method: "PUT",
           headers: {
@@ -82,7 +82,7 @@ function ProductCard({ product, onUpdate }) {
       // 2. Requisição DELETE
       // ⚠️ GARANTA QUE O ID ESTÁ SENDO INSERIDO CORRETAMENTE NA URL
       const response = await fetch(
-        `http://localhost:3001/api/products/${product.id}`,
+       `http://localhost:3001/card`,
         {
           method: "DELETE",
         }

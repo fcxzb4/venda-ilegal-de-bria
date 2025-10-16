@@ -43,7 +43,7 @@ const forceRefresh = () => {
     };
 
     try {
-      const response = await fetch('http://localhost:3001/api/products', {
+      const response = await fetch('http://localhost:3001/card', {
         method: 'POST', // Método POST para criar o recurso
         headers: {
           'Content-Type': 'application/json',
