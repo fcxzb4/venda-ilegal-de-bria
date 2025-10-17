@@ -36,9 +36,9 @@ const forceRefresh = () => {
   const handleAddCard = async () => {
     // 1. Dados de exemplo para o novo produto
     const newProductData = {
-      title: "Novo Braia Adicionado",
-      description: `Produto dinâmico #${products.length + 1} criado via POST.`,
-      price: "150,00",
+      title: "adicione novo Bria",
+      description: `Parabens voce criou um novo produto#${products.length + 1}.`,
+      price: "adicione",
       image: "https://via.placeholder.com/300x200?text=Novo+Cartao" 
     };
 
