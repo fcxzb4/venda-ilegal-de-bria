@@ -1,115 +1,37 @@
-import { useState, useEffect } from "react";
-import { ApiService } from "./service/Service";
-import  MainScreen  from "./components/MainScreen";
-import  CardForm from "./components/CardForm";
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+
+import HomePage from './module/pages/HomePage'; // Ajuste o caminho se necessário
+import Header from './components/container/Header'; // Ajuste o caminho se necessário
+
+// Você precisará importar as páginas dos outros módulos (ProductRoutes e AuthRoutes)
+// Se você não as tem, precisará criá-las ou usar nomes de placeholder.
+// Vou usar placeholders para 'ProductListPage', 'ProductDetailPage', 'LoginPage', 'RegisterPage'
+
+// Componentes de Placeholder (Ajuste ou substitua pelos seus componentes reais)
+const ProductListPage = () => <h1>Lista de Produtos</h1>;
+const ProductDetailPage = () => <h1>Detalhe do Produto</h1>;
+const LoginPage = () => <h1>Login</h1>;
+const RegisterPage = () => <h1>Registro</h1>;
+
 
 function App() {
-  // --- CONTROLLER (Lógica e Estado) ---
-  const [cards, setCards] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [isFormVisible, setIsFormVisible] = useState(false);
-  const [editingCard, setEditingCard] = useState(null); // null para criar, objeto do cartão para editar
-
-  // Função para carregar os cartões da API
-  const fetchCards = async () => {
-    setIsLoading(true);
-    const data = await ApiService.getCards();
-    setCards(data);
-    setIsLoading(false);
-  };
-
-  // Carrega os dados iniciais na montagem do componente
-  useEffect(() => {
-    fetchCards();
-  }, []);
-
-  // Manipulador para abrir o formulário em modo de adição
-  const handleAddNew = () => {
-    setEditingCard(null);
-    setIsFormVisible(true);
-  };
-
-  // Manipulador para abrir o formulário em modo de edição
-  const handleEdit = (card) => {
-    setEditingCard(card);
-    setIsFormVisible(true);
-  };
-
-  // Manipulador para deletar um cartão
-  const handleDelete = async (id) => {
-    // Confirmação do usuário (uma alternativa ao `window.confirm`)
-    if (confirm("Tem certeza que deseja deletar este cartão?")) {
-      const success = await ApiService.deleteCard(id);
-      if (success) {
-        // Remove o cartão da lista local para atualização instantânea da UI
-        setCards((prevCards) => prevCards.filter((card) => card.id !== id));
-      }
-    }
-  };
-
-  // Manipulador para salvar (criar ou atualizar) um cartão
-  const handleSave = async (cardData) => {
-    if (editingCard) {
-      // Atualizar
-      const updatedCard = await ApiService.updateCard(editingCard.id, cardData);
-      if (updatedCard) {
-        setCards((prevCards) =>
-          prevCards.map((c) => (c.id === editingCard.id ? updatedCard : c))
-        );
-      }
-    } else {
-      // Criar
-      const newCard = await ApiService.createCard(cardData);
-      if (newCard) {
-        setCards((prevCards) => [...prevCards, newCard]);
-      }
-    }
-    // Fecha o formulário após salvar
-    setIsFormVisible(false);
-    setEditingCard(null);
-  };
-
-  // Manipulador para fechar o formulário
-  const handleCancel = () => {
-    setIsFormVisible(false);
-    setEditingCard(null);
-  };
-
   return (
-    <div className="bg-slate-900 min-h-screen text-white font-sans">
-      <div className="container mx-auto p-6 lg:p-10">
-        <header className="mb-10">
-          <h1 className="text-4xl font-extrabold tracking-tight text-white sm:text-5xl md:text-6xl">
-            Gerenciador de Conteúdo
-          </h1>
-          <p className="mt-3 text-lg text-slate-400">
-            Crie, edite e organize seus cartões de forma simples e moderna.
-          </p>
-        </header>
+    <BrowserRouter>
+      <Header />
+      {/* O <Routes> principal que contém todas as rotas */}
+      <Routes>
+        {/* Rotas "gerais" ou "core" da aplicação */}
+        <Route path="/" element={<HomePage />} />
 
-        <main>
-          {isLoading ? (
-            <p className="text-center text-slate-400">Carregando cartões...</p>
-          ) : (
-            <MainScreen
-              cards={cards}
-              onEdit={handleEdit}
-              onDelete={handleDelete}
-              onAddNew={handleAddNew}
-            />
-          )}
-        </main>
-      </div>
+        {/* Exemplo de Rotas do Módulo de Produtos (originalmente em ProductRoutes.js) */}
+        <Route path="/produtos" element={<ProductListPage />} />
+        <Route path="/produtos/:id" element={<ProductDetailPage />} />
 
-      {/* Renderiza o formulário modal se estiver visível */}
-      {isFormVisible && (
-        <CardForm
-          card={editingCard}
-          onSave={handleSave}
-          onCancel={handleCancel}
-        />
-      )}
-    </div>
+        {/* Exemplo de Rotas do Módulo de Autenticação (originalmente em AuthRoutes.js) */}
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/registro" element={<RegisterPage />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 

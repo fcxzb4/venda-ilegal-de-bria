@@ -1,6 +1,6 @@
 // --- SERVICE (ApiService) ---
 // Responsável pela comunicação com a API backend.
-export const ApiService = {
+const ApiService = {
   // O URL base da nossa API
   BASE_URL: 'http://localhost:3001/card',
 
@@ -72,3 +72,5 @@ export const ApiService = {
     }
   },
 };
+
+export default ApiService
