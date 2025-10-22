@@ -43,11 +43,11 @@ function Header() {
               </NavLink>
 
               <NavLink
-                to="/configurar-tema"
+                to="/Memes"
                 className={linkStyle}
                 style={({ isActive }) => isActive ? activeLinkStyle : undefined}
               >
-                Configurar Tema
+                pagina Meme
               </NavLink>
 
               {/* Adicione outros links aqui conforme sua aplicação cresce */}
