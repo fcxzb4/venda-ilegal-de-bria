@@ -39,6 +39,7 @@ const ApiService = {
 
   // Atualiza um cartão existente
   updateCard: async (id, cardData) => {
+    console.log(cardData)
     try {
       const response = await fetch(`${ApiService.BASE_URL}/${id}`, {
         method: 'PUT',

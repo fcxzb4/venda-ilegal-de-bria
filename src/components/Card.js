@@ -9,7 +9,7 @@ function Card({ card, onEdit, onDelete }) {
   return (
     <div className="bg-slate-800 rounded-2xl overflow-hidden shadow-lg flex flex-col transition-transform duration-300 hover:transform hover:-translate-y-2">
       <img
-        src={card.imageUrl}
+        src={card.image}
         alt={card.title}
         className="w-full h-48 object-cover"
         onError={handleImageError}

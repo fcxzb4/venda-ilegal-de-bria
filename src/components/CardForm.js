@@ -7,7 +7,7 @@ function CardForm({ card, onSave, onCancel }) {
   const [formData, setFormData] = useState({
     title: '',
     description: '',
-    imageUrl: ''
+    image: ''
   });
 
   // Efeito para preencher o formulário quando um cartão é passado para edição
@@ -16,7 +16,7 @@ function CardForm({ card, onSave, onCancel }) {
       setFormData(card);
     } else {
       // Limpa o formulário se for para criar um novo
-      setFormData({ title: '', description: '', imageUrl: '' });
+      setFormData({ title: '', description: '', image: '' });
     }
   }, [card]);
 
@@ -32,7 +32,7 @@ function CardForm({ card, onSave, onCancel }) {
     // Adiciona uma imagem padrão se o campo estiver vazio
     const dataToSave = {
       ...formData,
-      imageUrl: formData.imageUrl || `https://placehold.co/600x400/334155/ffffff?text=${encodeURIComponent(formData.title)}`
+      image: formData.image || `https://placehold.co/600x400/334155/ffffff?text=${encodeURIComponent(formData.title)}`
     };
     onSave(dataToSave);
   };
@@ -63,8 +63,8 @@ function CardForm({ card, onSave, onCancel }) {
             />
             <input
               type="text"
-              name="imageUrl"
-              value={formData.imageUrl}
+              name="image"
+              value={formData.image}
               onChange={handleChange}
               placeholder="URL da Imagem (opcional)"
               className="w-full bg-gray-700 text-white placeholder-gray-400 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-indigo-500"

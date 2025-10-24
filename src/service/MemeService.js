@@ -24,6 +24,7 @@ const MemeApiService = {
    * @returns {Promise<object>} Uma promessa que resolve para o novo meme criado.
    */
   createMeme: async (memeData) => {
+    console.log(memeData)
     const response = await fetch(API_URL, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },

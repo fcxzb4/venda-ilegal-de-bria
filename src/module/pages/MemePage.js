@@ -113,7 +113,7 @@ function MemePage() {
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {memes.map((meme) => (
           <div key={meme.id} className="bg-white border rounded-lg shadow-md overflow-hidden">
-            <img src={meme.imageUrl || 'https://placehold.co/600x400?text=Sem+Imagem'} alt={meme.title} className="w-full h-48 object-cover" />
+            <img src={meme.image || 'https://placehold.co/600x400?text=Sem+Imagem'} alt={meme.title} className="w-full h-48 object-cover" />
             <div className="p-4">
               <h2 className="text-xl font-semibold mb-2">{meme.title}</h2>
               <p className="text-gray-600 mb-4">{meme.description}</p>
@@ -133,7 +133,7 @@ function MemeForm({ meme, onSave, onCancel }) {
   const [formData, setFormData] = useState({
     title: meme?.title || '',
     description: meme?.description || '',
-    imageUrl: meme?.imageUrl || '',
+    image: meme?.image || '',
   });
 
   const handleChange = (e) => {
@@ -161,7 +161,7 @@ function MemeForm({ meme, onSave, onCancel }) {
           </div>
           <div className="mb-4">
             <label className="block text-gray-700">URL da Imagem</label>
-            <input type="text" name="imageUrl" value={formData.imageUrl} onChange={handleChange} className="w-full p-2 border rounded" />
+            <input type="text" name="image" value={formData.image} onChange={handleChange} className="w-full p-2 border rounded" />
           </div>
           <div className="flex justify-end space-x-4">
             <button type="button" onClick={onCancel} className="bg-gray-300 px-4 py-2 rounded">Cancelar</button>
