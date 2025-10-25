@@ -1,4 +1,4 @@
-import Card  from "./Card";
+import Card  from "../card/Card";
 
 function MainScreen({ cards, onEdit, onDelete, onAddNew }) {
   return (
@@ -17,7 +17,7 @@ function MainScreen({ cards, onEdit, onDelete, onAddNew }) {
             stroke="currentColor"
           >
             <path
-              strokeLinecap="round"
+              strokeLinecap="round" 
               strokeLinejoin="round"
               strokeWidth={2}
               d="M12 4v16m8-8H4"

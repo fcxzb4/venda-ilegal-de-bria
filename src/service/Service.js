@@ -46,6 +46,7 @@ const ApiService = {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(cardData),
       });
+      console.log(response)
       if (!response.ok) {
         throw new Error('Falha ao atualizar o cartão.');
       }

@@ -2,7 +2,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
 import MemePage from './module/pages/MemePage';
 import HomePage from './module/pages/HomePage'; // Ajuste o caminho se necessário
-import Header from './components/container/Header'; // Ajuste o caminho se necessário
+import Header from './components/container/header/Header'; // Ajuste o caminho se necessário
 
 // Você precisará importar as páginas dos outros módulos (ProductRoutes e AuthRoutes)
 // Se você não as tem, precisará criá-las ou usar nomes de placeholder.
