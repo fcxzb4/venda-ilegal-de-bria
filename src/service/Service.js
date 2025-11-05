@@ -2,7 +2,7 @@
 // Responsável pela comunicação com a API backend.
 const ApiService = {
   // O URL base da nossa API
-  BASE_URL: 'http://localhost:3001/card',
+  BASE_URL: 'https://localhost:3001/card',
 
   // Busca todos os cartões do servidor
   getCards: async () => {
@@ -59,6 +59,7 @@ const ApiService = {
 
   // Deleta um cartão
   deleteCard: async (id) => {
+ console.log("DELETE URL:", `${ApiService.BASE_URL}/${id}`);
     try {
       const response = await fetch(`${ApiService.BASE_URL}/${id}`, {
         method: 'DELETE',
