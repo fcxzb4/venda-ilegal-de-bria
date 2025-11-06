@@ -1,7 +1,7 @@
 import style from './home_page.module.scss'
-import MainScreen from '../components/mainscreen/MainScreen';
-import CardForm from '../components/cardform/CardForm';
-import { useCardLogic } from '../hooks/home_page_hooks'; // 1. Importa o novo hook
+import MainScreen from '../../components/mainscreen/MainScreen';
+import CardForm from '../../components/cardform/CardForm';
+import { useCardLogic } from '../../hooks/home_page_hooks'; // 1. Importa o novo hook
 
 function HomePage() {
   // 2. Chama o hook para pegar toda a lógica e estado

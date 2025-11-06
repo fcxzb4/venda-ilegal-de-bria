@@ -2,14 +2,14 @@
 // Responsável pela comunicação com a API backend.
 const ApiService = {
   // O URL base da nossa API
-  BASE_URL: 'https://localhost:3001/card',
+  BASE_URL: "http://localhost:3001/card",
 
   // Busca todos os cartões do servidor
   getCards: async () => {
     try {
       const response = await fetch(ApiService.BASE_URL);
       if (!response.ok) {
-        throw new Error('Falha ao buscar os dados da API.');
+        throw new Error("Falha ao buscar os dados da API.");
       }
       return await response.json();
     } catch (error) {
@@ -23,12 +23,12 @@ const ApiService = {
   createCard: async (cardData) => {
     try {
       const response = await fetch(ApiService.BASE_URL, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(cardData),
       });
       if (!response.ok) {
-        throw new Error('Falha ao criar o cartão.');
+        throw new Error("Falha ao criar o cartão.");
       }
       return await response.json();
     } catch (error) {
@@ -39,16 +39,16 @@ const ApiService = {
 
   // Atualiza um cartão existente
   updateCard: async (id, cardData) => {
-    console.log(cardData)
+    console.log(cardData);
     try {
       const response = await fetch(`${ApiService.BASE_URL}/${id}`, {
-        method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(cardData),
       });
-      console.log(response)
+      console.log(response);
       if (!response.ok) {
-        throw new Error('Falha ao atualizar o cartão.');
+        throw new Error("Falha ao atualizar o cartão.");
       }
       return await response.json();
     } catch (error) {
@@ -59,13 +59,13 @@ const ApiService = {
 
   // Deleta um cartão
   deleteCard: async (id) => {
- console.log("DELETE URL:", `${ApiService.BASE_URL}/${id}`);
+    console.log("DELETE URL:", `${ApiService.BASE_URL}/${id}`);
     try {
       const response = await fetch(`${ApiService.BASE_URL}/${id}`, {
-        method: 'DELETE',
+        method: "DELETE",
       });
       if (!response.ok) {
-        throw new Error('Falha ao deletar o cartão.');
+        throw new Error("Falha ao deletar o cartão.");
       }
       // A resposta de um DELETE bem-sucedido geralmente não tem corpo
       return true;
@@ -74,6 +74,18 @@ const ApiService = {
       return false;
     }
   },
+
+  // registerUser: async (userData) => {
+  //   console.log(userData)
+  //   const response = await fetch(`http://localhost:3001/auth/register`, {
+  //     method: "POST",
+  //     headers: { "Content-Type": "application/json" },
+  //     body: JSON.stringify(userData),
+  //   });
+
+  //   if (!response.ok) throw new Error("Erro ao registrar");
+  //   return response.json();
+  // },
 };
 
-export default ApiService
+export default ApiService;
