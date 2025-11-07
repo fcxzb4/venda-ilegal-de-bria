@@ -1,9 +1,29 @@
     import { useRegisterLogic } from "../../hooks/use_register_logic";
+    import LoginForm from '../../components/auth_conponents/LoginForm'
+    import SignUpForm from "../../components/auth_conponents/SignUpForm";
+    import {useAuth} from '../../hooks/use_register_logic'
+    import { useAuthContext } from "../../context/AuthContext";
+    import { Navigate } from "react-router-dom";
     import style from "./sign_up.module.scss";
 
     function SignUp() {
-    const { formData, handleChange, handleSubmit, error, success } = useRegisterLogic();
+    const { formData, 
+        handleChange, 
+        handleSubmit, 
+        error, 
+        success } = useRegisterLogic();
 
+        if (isAthenticated) {
+            return <Navigate tp="/cards" replace />
+        }
+
+       const formProps = {
+    formData,
+    handleChange,
+    handleSubmit,
+    loading,
+    error,
+  };
     return (
         <div className={style.registerContainer}>
         <div className={style.registerCard}>
