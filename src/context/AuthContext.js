@@ -2,7 +2,7 @@ import {createContext, useState , useContext} from "react";
 
 const AuthContext = createContext();
 
-export const AuthProvider = ({Children}) => {
+export const AuthProvider = ({children}) => {
     const [user , setUser ] = useState(null);
 
     const loginUser = (userData) => {
@@ -16,12 +16,12 @@ export const AuthProvider = ({Children}) => {
     user,
     loginUser,
     logoutUser,
-    isAthemticated: !!user,
+    isAthenticated: !!user,
    };
 
    return (
     <AuthContext.Provider value={value}>
-        {Children}
+        {children}
     </AuthContext.Provider>
    )
 };

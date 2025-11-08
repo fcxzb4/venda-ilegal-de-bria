@@ -4,13 +4,12 @@ import { useAuthContext } from "../context/AuthContext";
 import { authService } from "../service/SignUpService";
 
 export const useRegisterLogic = () => {
-  const { loginUser } = useAuthContext
+  const { loginUser } = useAuthContext()
 
   const [ isLoginMode, setIsloginmode ] = useState(true)
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    bd: "",
     password: "",
   });
   

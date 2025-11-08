@@ -1,4 +1,3 @@
-import React from 'react';
 
 function SignUpForm({ formData, handleChange, handleSubmit, loading, error }) {
   return (

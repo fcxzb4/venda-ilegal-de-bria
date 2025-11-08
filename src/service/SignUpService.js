@@ -1,4 +1,4 @@
-const API_BASE_URL = 'http://localhost:3000/auth';
+const API_BASE_URL = 'http://localhost:3001/auth';
 
 const login = async ({ email, password }) => {  
   const apiPayload = {
