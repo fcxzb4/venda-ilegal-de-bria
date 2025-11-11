@@ -48,4 +48,4 @@ function SignUpForm({ formData, handleChange, handleSubmit, loading, error }) {
   );
 }
 
-export default SignUpForm;
+export default SignUpForm;  

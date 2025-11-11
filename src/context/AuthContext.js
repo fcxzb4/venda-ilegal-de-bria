@@ -3,14 +3,21 @@ import {createContext, useState , useContext} from "react";
 const AuthContext = createContext();
 
 export const AuthProvider = ({children}) => {
+    const [isAuthenticated, setIsAuthenticated] = useState(!!localStorage.getItem("token"));
     const [user , setUser ] = useState(null);
 
-    const loginUser = (userData) => {
-        setUser(userData);
-    }
+     const loginUser = (data) => {
+    localStorage.setItem("token", data.token); // precisa ter token retornando da API
+    setUser(data.user);
+    setIsAuthenticated(true);
+  };
     const logoutUser = () => {
-        setUser(null)
-    }
+    localStorage.removeItem("token");
+    setUser(null);
+    setIsAuthenticated(false);
+  };
+
+    
 
    const value = {
     user,
@@ -20,7 +27,7 @@ export const AuthProvider = ({children}) => {
    };
 
    return (
-    <AuthContext.Provider value={value}>
+    <AuthContext.Provider value={{ isAuthenticated, user, value, loginUser, logoutUser }}>
         {children}
     </AuthContext.Provider>
    )

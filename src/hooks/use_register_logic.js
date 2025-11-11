@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { registerUser } from "../service/SignUpService";
 import { useAuthContext } from "../context/AuthContext";
 import { authService } from "../service/SignUpService";
 
