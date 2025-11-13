@@ -1,38 +1,84 @@
-import {createContext, useState , useContext} from "react";
+import React, { createContext, useContext, useEffect, useState } from "react";
 
-const AuthContext = createContext();
+export const AuthContext = createContext();
 
-export const AuthProvider = ({children}) => {
-    const [isAuthenticated, setIsAuthenticated] = useState(!!localStorage.getItem("token"));
-    const [user , setUser ] = useState(null);
+export const AuthProvider = ({ children }) => {
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
 
-     const loginUser = (data) => {
-    localStorage.setItem("token", data.token); // precisa ter token retornando da API
+  // 🔹 1. Verifica se o usuário ainda está logado (cookie JWT)
+  useEffect(() => {
+    const checkAuth = async () => {
+      try {
+        const response = await fetch("http://localhost:3001/auth/me", {
+          method: "GET",
+          credentials: "include", // Importante para enviar os cookies
+        });
+
+        if (response.ok) {
+          const data = await response.json();
+          setUser(data);
+          setIsAuthenticated(true);
+        } else {
+          setUser(null);
+          setIsAuthenticated(false);
+        }
+      } catch (err) {
+        console.error("Erro ao verificar autenticação:", err);
+        setUser(null);
+        setIsAuthenticated(false);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    checkAuth();
+  }, []);
+
+  // 🔹 2. Login: a API já define o cookie JWT
+  const loginUser = async (credentials) => {
+    const response = await fetch("http://localhost:3001/auth/login", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      credentials: "include", // envia e recebe cookies
+      body: JSON.stringify(credentials),
+    });
+
+    if (!response.ok) {
+      throw new Error("Falha no login");
+    }
+
+    const data = await response.json();
     setUser(data.user);
     setIsAuthenticated(true);
   };
-    const logoutUser = () => {
-    localStorage.removeItem("token");
+
+  // 🔹 3. Logout: apaga o cookie no servidor
+  const logoutUser = async () => {
+    await fetch("http://localhost:3001/auth/logout", {
+      method: "POST",
+      credentials: "include",
+    });
     setUser(null);
     setIsAuthenticated(false);
   };
 
-    
-
-   const value = {
+  const value = {
     user,
     loginUser,
     logoutUser,
-    isAthenticated: !!user,
-   };
+    isAuthenticated,
+    loading,
+  };
 
-   return (
-    <AuthContext.Provider value={{ isAuthenticated, user, value, loginUser, logoutUser }}>
-        {children}
+  return (
+    <AuthContext.Provider value={value}>
+      {!loading && children}
     </AuthContext.Provider>
-   )
+  );
 };
 
 export const useAuthContext = () => {
-    return useContext(AuthContext)
-}
+  return useContext(AuthContext);
+};

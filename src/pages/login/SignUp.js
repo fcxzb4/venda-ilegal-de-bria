@@ -27,7 +27,7 @@ function SignUp() {
   };
 
    if (isAuthenticated) {
-    return <Navigate to="/card" replace />;
+    return <Navigate to="/home" replace />;
   }
 
   return (
